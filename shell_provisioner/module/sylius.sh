@@ -2,9 +2,11 @@
 
 cd /var/www/sylius
 
-composer install --optimize-autoloader
+composer install
 
-php app/console sylius:install --no-interaction
-npm rebuild node-sass
+sed -i "s/database_password: null/database_password: vagrant/g" app/config/parameters.yml
+
+php bin/console sylius:install --no-interaction
+php bin/console sylius:fixtures:load
 npm install
-./node_modules/.bin/gulp
+npm run gulp

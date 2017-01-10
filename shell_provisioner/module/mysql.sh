@@ -2,20 +2,22 @@
 
 # Percona server (MySQL)
 
-# Add repository
-wget -O - http://www.percona.com/redir/downloads/RPM-GPG-KEY-percona | gpg --import
-gpg --armor --export 1C4CBDCDCD2EFD2A | apt-key add -
-
 cat << EOF >/etc/apt/sources.list.d/percona.list
 deb http://repo.percona.com/apt jessie main
 deb-src http://repo.percona.com/apt jessie main
 EOF
 apt-get update
 
+# Add repository
+gpg --keyserver keys.gnupg.net --recv-key 9334A25F8507EFA5
+
+wget -O - http://www.percona.com/redir/downloads/RPM-GPG-KEY-percona | gpg --import
+gpg --armor --export 9334A25F8507EFA5 | apt-key add -
+
 # Install server and client
 echo "percona-server-server-5.6 percona-server-server/root_password password vagrant" | debconf-set-selections
 echo "percona-server-server-5.6 percona-server-server/root_password_again password vagrant" | debconf-set-selections
-apt-get -y install percona-server-server-5.6 percona-server-client-5.6
+apt-get -y --force-yes install percona-server-server-5.6 percona-server-client-5.6
 
 # Configuration
 sed -i "s/\[mysqld\]/[mysqld]\ninnodb_file_per_table = 1/" /etc/mysql/my.cnf
@@ -35,5 +37,4 @@ $MYSQLCMD "FLUSH PRIVILEGES;"
 $MYSQLCMD "CREATE FUNCTION fnv1a_64 RETURNS INTEGER SONAME 'libfnv1a_udf.so'"
 $MYSQLCMD "CREATE FUNCTION fnv_64 RETURNS INTEGER SONAME 'libfnv_udf.so'"
 $MYSQLCMD "CREATE FUNCTION murmur_hash RETURNS INTEGER SONAME 'libmurmur_udf.so'"
-apt-get install -y percona-toolkit
-
+apt-get install -y percona-toolkit --force-yes
