@@ -12,12 +12,22 @@ This configuration includes following software:
 
 # Usage
 
-First you need to create vagrant VM
+First you need to download a [Sylius standard project](https://github.com/Sylius/Sylius-Standard) (`-n` flag for no interaction mode):
+```bash
+$ composer create-project -s beta -n sylius/sylius-standard acme
+```
 
+Then clone this repository inside newly created project 
+```bash
+$ cd acme
+$ git clone git@github.com:Sylius/Vagrant.git vagrant
 ```
-$ cd etc/vagrant
+
+And build a vagrant:
+```bash
+$ cd vagrant
 $ vagrant up
-```
+``` 
 
 While waiting for Vagrant to start up, you should add an entry into /etc/hosts file on the host machine.
 
@@ -25,22 +35,19 @@ While waiting for Vagrant to start up, you should add an entry into /etc/hosts f
 10.0.0.200      sylius.dev
 ```
 
-Setup your db password in parameters.yml
-
-```
-parameters:
-    database_password: vagrant
-```
-
 From now you should be able to access your Sylius project at [http://sylius.dev/app_dev.php](http://sylius.dev/app_dev.php)
 
 Installing your assets manually
 
-```
-    vagrant ssh -c 'cd /var/www/sylius && ./node_modules/.bin/gulp'
+```bash
+$ vagrant ssh -c 'cd /var/www/sylius && ./node_modules/.bin/gulp'
 ```
 
 # Troubleshooting
+
+### Beware
+
+The default vagrant configuration uses a database connection with user `root` and password `vagrant`. If you create a project without interaction (`-n` flag in `composer create-project`) or leave a null value for password, vagrant’s Sylius setup will take care of password change. Otherwise, you will have to change it on your own.
 
 Using Symfony2 inside Vagrant can be slow due to synchronisation delay incurred by NFS. To avoid this, both locations have been moved to a shared memory segment under ``/dev/shm/sylius``.
 
