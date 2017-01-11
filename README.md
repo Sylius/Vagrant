@@ -17,17 +17,17 @@ First you need to download a [Sylius standard project](https://github.com/Sylius
 $ composer create-project -s beta -n sylius/sylius-standard acme
 ```
 
-Then clone this repository inside newly created project 
+Then clone this repository inside newly created project:
 ```bash
 $ cd acme
 $ git clone git@github.com:Sylius/Vagrant.git vagrant
 ```
 
-And build a vagrant:
+And build Vagrant:
 ```bash
 $ cd vagrant
 $ vagrant up
-``` 
+```
 
 While waiting for Vagrant to start up, you should add an entry into /etc/hosts file on the host machine.
 
