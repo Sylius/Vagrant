@@ -1,10 +1,10 @@
 #!/bin/bash
 
-cd /var/www/sylius
+cd /var/www/sites
 
-rm .gitkeep
+composer create-project -s dev -n sylius/sylius-standard ./sylius 
 
-composer create-project -s beta -n sylius/sylius-standard .
+cd sylius
 
 sed -i "s/database_password: null/database_password: vagrant/g" app/config/parameters.yml
 
@@ -12,6 +12,3 @@ php bin/console sylius:install --no-interaction
 php bin/console sylius:fixtures:load
 npm install
 npm run gulp
-
-cd ../
-git update-index --assume-unchanged sylius/.gitkeep
