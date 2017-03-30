@@ -1,1 +1,3 @@
 /.vagrant/
+/sites/*
+!/sites/.gitkeep
