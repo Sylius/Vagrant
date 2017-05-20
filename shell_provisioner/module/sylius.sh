@@ -2,6 +2,10 @@
 
 cd /var/www/sites
 
+
+# if sylius exists then remove it
+rm -rf sylius
+
 composer create-project -s beta -n sylius/sylius-standard ./sylius 
 
 cd sylius
