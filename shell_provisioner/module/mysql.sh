@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Percona server (MySQL)
+# Comment for testing branch
 
 cat << EOF >/etc/apt/sources.list.d/percona.list
 deb http://repo.percona.com/apt jessie main
@@ -28,7 +29,7 @@ service mysql restart
 MYSQLCMD="mysql -uroot -pvagrant -e"
 $MYSQLCMD "CREATE DATABASE ${APP_DBNAME} DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;"
 
-$MYSQLCMD "CREATE USER root@'10.0.0.1' IDENTIFIED BY 'vagrant';"
+$MYSQLCMD "CREATE USER root@'10.0.0.%' IDENTIFIED BY 'vagrant';"
 $MYSQLCMD "GRANT ALL PRIVILEGES ON *.* TO root@'10.0.0.1';"
 
 $MYSQLCMD "FLUSH PRIVILEGES;"

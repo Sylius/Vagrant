@@ -3,17 +3,17 @@
 # Debian
 
 # Locales
-sed -i 's/# nl_BE.UTF-8 UTF-8/nl_BE.UTF-8 UTF-8/' /etc/locale.gen
+# sed -i 's/# nl_BE.UTF-8 UTF-8/nl_BE.UTF-8 UTF-8/' /etc/locale.gen
 locale-gen
 # echo 'LANG=nl_BE.UTF-8' > /etc/default/locale
 
 # Timezone
-echo "Europe/Brussels" > /etc/timezone
+echo "Africa/Nairobi" > /etc/timezone
 dpkg-reconfigure -f noninteractive tzdata
 
 # Console keyboard
-sed -i 's/XKBLAYOUT=.*/XKBLAYOUT="be"/' /etc/default/keyboard
-setupcon --force
+# sed -i 's/XKBLAYOUT=.*/XKBLAYOUT="be"/' /etc/default/keyboard
+# setupcon --force
 
 # Host file
 echo 127.0.0.1 $APP_DOMAIN >> /etc/hosts
