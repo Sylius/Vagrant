@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Percona server (MySQL)
+# Comment for testing branch
 
 cat << EOF >/etc/apt/sources.list.d/percona.list
 deb http://repo.percona.com/apt jessie main
