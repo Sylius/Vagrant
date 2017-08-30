@@ -10,5 +10,5 @@ sed -i "s/database_password: null/database_password: vagrant/g" app/config/param
 
 php bin/console sylius:install --no-interaction
 php bin/console sylius:fixtures:load
-npm install
-npm run gulp
+yarn install
+yarn run gulp
