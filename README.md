@@ -2,7 +2,7 @@
 This configuration includes following software:
 
 * Debian 8.1
-* PHP 7.0
+* PHP 7.1
 * MySQL 5.6 Percona Server
 * Apache 2.2.22
 * Composer
