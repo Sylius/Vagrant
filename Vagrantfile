@@ -3,9 +3,15 @@
 
 VAGRANTFILE_API_VERSION = "2"
 
+module OS
+    def OS.windows?
+        (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
+    end
+end
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.define :sylius do |sylius_config|
-        sylius_config.vm.box = "debian/jessie64"
+        sylius_config.vm.box = "michaelward82/trusty64-php7"
 
         sylius_config.vm.provider "virtualbox" do |v|
             v.gui = false
@@ -13,7 +19,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             v.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
         end
 
-        sylius_config.vm.synced_folder "sites/", "/var/www/sites", type: "nfs", mount_options: ['rw', 'vers=3', 'tcp', 'fsc', 'nolock', 'actimeo=2']
+        if (defined?(OS.windows)).nil?
+            sylius_config.vm.synced_folder "sites/", "/var/www/sites"
+        else
+            sylius_config.vm.synced_folder "sites/", "/var/www/sites", type: "nfs", mount_options: ['rw', 'vers=3', 'tcp', 'fsc', 'nolock', 'actimeo=2']
+        end
         sylius_config.vm.network "private_network", ip: "10.0.0.200"
 
         # Shell provisioning

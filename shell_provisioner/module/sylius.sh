@@ -2,11 +2,15 @@
 
 cd /var/www/sites
 
+
+# if sylius exists then remove it
+rm -rf sylius
+
 composer create-project -s beta -n sylius/sylius-standard ./sylius 
 
 cd sylius
 
-sed -i "s/database_password: null/database_password: vagrant/g" app/config/parameters.yml
+#sed -i "s/database_password: null/database_password: vagrant/g" app/config/parameters.yml
 
 php bin/console sylius:install --no-interaction
 php bin/console sylius:fixtures:load

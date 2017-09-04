@@ -1,5 +1,9 @@
 #!/bin/bash
 
+apt-get -y update
+
+apt-get remove php* apache2*
+
 # Shell provisioner
 MODULE_PATH='/vagrant/shell_provisioner/module'
 CONFIG_PATH='/vagrant/shell_provisioner/config'
@@ -13,7 +17,6 @@ APP_DBNAME='sylius'
 
 # Adding an entry here executes the corresponding .sh file in MODULE_PATH
 DEPENDENCIES=(
-    debian
     tools
     php
     mysql
