@@ -66,26 +66,24 @@ $ tail -f /var/log/apache2/sylius_access.log
 Edit "Vagrantfile" and replace this following line:
 
 ```bash
-sylius_config.vm.provision :shell, privileged: false, path: "shell_provisioner/module/sylius.sh" 
+sylius_config.vm.provision :shell, privileged: false, path: "shell_provisioner/sylius/create.sh" 
 ```
 
 By this one:
-```bash
-sylius_config.vm.provision :shell, privileged: false, path: "shell_provisioner/module/sylius_for_contribution.sh"
+ 
+ ```bash
+sylius_config.vm.provision :shell, privileged: false, path: "shell_provisioner/sylius/create_for_contribution.sh"
 ```
 
 ### Clone your own sylius repository
 
 ```bash
-cd /sites/
-git clone https://github.com/{user}/Sylius sylius
+git clone https://github.com/{user}/Sylius sites/sylius
 ```
 
-replace `{user}` with your github user
+replace `{user}` with your github account user name
 
 ## Build Vagrant:
-
-On the root directory of the vagrant project:
 
 ```bash
 $ vagrant up
