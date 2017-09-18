@@ -14,7 +14,7 @@ This configuration includes following software:
 
 First you need to download this repository
 ```bash
-$ git clone git@github.com:Sylius/Vagrant.git
+$ git clone git@github.com:Sylius/Vagrant.git vagrant
 ```
 
 And build Vagrant:
@@ -57,4 +57,34 @@ To view the apache logs, run the following commands (inside Vagrant):
 ```bash
 $ tail -f /var/log/apache2/sylius_error.log
 $ tail -f /var/log/apache2/sylius_access.log
+```
+
+# Configure vagrant to contribute on Sylius Core
+
+### Use sylius for contribution
+
+Edit "Vagrantfile" and replace this following line:
+
+```bash
+sylius_config.vm.provision :shell, privileged: false, path: "shell_provisioner/sylius/create.sh" 
+```
+
+By this one:
+ 
+ ```bash
+sylius_config.vm.provision :shell, privileged: false, path: "shell_provisioner/sylius/create_for_contribution.sh"
+```
+
+### Clone your own sylius repository
+
+```bash
+git clone https://github.com/{user}/Sylius sites/sylius
+```
+
+replace `{user}` with your github account user name
+
+## Build Vagrant:
+
+```bash
+$ vagrant up
 ```

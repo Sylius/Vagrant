@@ -1,10 +1,6 @@
 #!/bin/bash
 
-cd /var/www/sites
-
-composer create-project --no-progress -s beta -n sylius/sylius-standard ./sylius 
-
-cd sylius
+cd /var/www/sites/sylius
 
 sed -i "s/database_password: null/database_password: vagrant/g" app/config/parameters.yml
 
