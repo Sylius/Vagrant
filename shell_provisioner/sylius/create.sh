@@ -2,4 +2,4 @@
 
 cd /var/www/sites
 
-composer create-project --no-progress -s beta -n sylius/sylius-standard ./sylius
+composer create-project --no-progress -n sylius/sylius-standard ./sylius

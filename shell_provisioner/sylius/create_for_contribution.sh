@@ -2,4 +2,4 @@
 
 cd /var/www/sites/sylius
 
-composer install
+composer install --no-progress
