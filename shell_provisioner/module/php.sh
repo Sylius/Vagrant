@@ -7,7 +7,7 @@ wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 echo "deb https://packages.sury.org/php/ jessie main" > /etc/apt/sources.list.d/php.list
 sudo apt update
 
-apt-get -y install php7.1-cli php7.1-fpm php7.1-dev php7.1-curl php7.1-intl \
+apt-get -y install php7.1-cli php7.1-xdebug php7.1-fpm php7.1-dev php7.1-curl php7.1-intl \
     php7.1-mysql php7.1-sqlite3 php7.1-gd php7.1-mbstring php7.1-xml
 
 sed -i 's/;date.timezone.*/date.timezone = Europe\/Brussels/' /etc/php/7.1/fpm/php.ini
