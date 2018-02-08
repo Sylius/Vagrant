@@ -26,10 +26,10 @@ $ vagrant up
 While waiting for Vagrant to start up, you should add an entry into /etc/hosts file on the host machine.
 
 ```
-10.0.0.200      sylius.dev
+10.0.0.200      sylius.test
 ```
 
-From now you should be able to access your Sylius project at [http://sylius.dev/app_dev.php](http://sylius.dev/app_dev.php).
+From now you should be able to access your Sylius project at [http://sylius.test/app_dev.php](http://sylius.test/app_dev.php).
 
 Your newly created project is available under `sylius` folder.
 
