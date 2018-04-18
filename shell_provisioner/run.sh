@@ -8,7 +8,7 @@ CONFIG_PATH='/vagrant/shell_provisioner/config'
 GUEST_IP='10.0.0.200'
 
 #Config
-APP_DOMAIN='sylius.dev'
+APP_DOMAIN='sylius.local'
 APP_DBNAME='sylius'
 
 # Adding an entry here executes the corresponding .sh file in MODULE_PATH
