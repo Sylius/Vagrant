@@ -1,0 +1,5 @@
+* text=auto
+*.md text
+# Shell scripts
+*.sh eol=lf
+*.conf eol=lf
