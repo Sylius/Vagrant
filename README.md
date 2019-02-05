@@ -1,3 +1,7 @@
+## 🚨This project has been abandoned 🚨
+
+Since [Sylius-Standard v1.3.0](https://github.com/Sylius/Sylius-Standard/tree/v1.3.0) we are supporting Docker out of the box. Please use a docker configuration for your end projects.
+
 # Description
 This configuration includes following software:
 
