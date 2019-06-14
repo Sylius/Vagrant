@@ -45,6 +45,7 @@ $ vagrant ssh -c 'cd /var/www/sylius && ./node_modules/.bin/gulp'
 
 # Troubleshooting
 
+
 ### Beware
 
 Using Symfony2 inside Vagrant can be slow due to synchronisation delay incurred by NFS. To avoid this, both locations have been moved to a shared memory segment under ``/dev/shm/sylius``.
@@ -62,7 +63,14 @@ To view the apache logs, run the following commands (inside Vagrant):
 $ tail -f /var/log/apache2/sylius_error.log
 $ tail -f /var/log/apache2/sylius_access.log
 ```
-
+### Shared folder on windows
+On windows you may have to install winnfsd and vbguest plugins to have shared folders working properly.
+```bash
+ $ vagrant plugin install vagrant-winnfsd
+ ```
+ ```bash
+ $ vagrant plugin install vagrant-vbguest
+ ```
 # Configure vagrant to contribute on Sylius Core
 
 ### Use sylius for contribution
