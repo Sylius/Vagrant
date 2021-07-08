@@ -40,7 +40,7 @@ Your newly created project is available under `sylius` folder.
 Installing your assets manually
 
 ```bash
-$ vagrant ssh -c 'cd /var/www/sylius && ./node_modules/.bin/gulp'
+$ vagrant ssh -c 'cd /var/www/sites/sylius && ./node_modules/.bin/gulp'
 ```
 
 # Troubleshooting
